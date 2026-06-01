@@ -1,0 +1,14 @@
+Repository DagsHub:
+https://dagshub.com/bulgogipedas/smlsml-credit-scoring
+
+MLflow Experiments:
+https://dagshub.com/bulgogipedas/smlsml-credit-scoring/experiments
+
+MLflow UI:
+https://dagshub.com/bulgogipedas/smlsml-credit-scoring.mlflow
+
+Run Advanced yang berhasil:
+https://dagshub.com/bulgogipedas/smlsml-credit-scoring.mlflow/#/experiments/0/runs/c8421e2fc6dd4d74b169605956876536
+
+Model yang terdaftar:
+credit_scoring_random_forest version 1

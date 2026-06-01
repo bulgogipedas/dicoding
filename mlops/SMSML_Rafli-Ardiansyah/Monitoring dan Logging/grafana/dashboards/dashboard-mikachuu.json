@@ -1,0 +1,20 @@
+{
+  "uid": "dashboard-mikachuu",
+  "title": "dashboard-mikachuu",
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "5s",
+  "panels": [
+    {"type": "stat", "title": "Total Request", "gridPos": {"x": 0, "y": 0, "w": 6, "h": 4}, "targets": [{"expr": "credit_request_total"}]},
+    {"type": "stat", "title": "Error Total", "gridPos": {"x": 6, "y": 0, "w": 6, "h": 4}, "targets": [{"expr": "credit_error_total"}]},
+    {"type": "stat", "title": "Default Prediction Ratio", "gridPos": {"x": 12, "y": 0, "w": 6, "h": 4}, "targets": [{"expr": "credit_default_prediction_ratio"}]},
+    {"type": "stat", "title": "Model Ready", "gridPos": {"x": 18, "y": 0, "w": 6, "h": 4}, "targets": [{"expr": "credit_model_ready"}]},
+    {"type": "timeseries", "title": "Latency p95", "gridPos": {"x": 0, "y": 4, "w": 12, "h": 7}, "targets": [{"expr": "histogram_quantile(0.95, rate(credit_request_latency_seconds_bucket[5m]))"}]},
+    {"type": "timeseries", "title": "CPU Usage", "gridPos": {"x": 12, "y": 4, "w": 12, "h": 7}, "targets": [{"expr": "credit_system_cpu_usage_percent"}]},
+    {"type": "timeseries", "title": "RAM Usage", "gridPos": {"x": 0, "y": 11, "w": 12, "h": 7}, "targets": [{"expr": "credit_system_ram_usage_percent"}]},
+    {"type": "timeseries", "title": "Prediction Confidence", "gridPos": {"x": 12, "y": 11, "w": 12, "h": 7}, "targets": [{"expr": "credit_prediction_confidence_avg"}]},
+    {"type": "timeseries", "title": "Prediction Count by Class", "gridPos": {"x": 0, "y": 18, "w": 12, "h": 7}, "targets": [{"expr": "credit_prediction_total"}]},
+    {"type": "timeseries", "title": "Exporter Uptime", "gridPos": {"x": 12, "y": 18, "w": 12, "h": 7}, "targets": [{"expr": "credit_exporter_uptime_seconds"}]}
+  ]
+}

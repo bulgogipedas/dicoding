@@ -1,0 +1,5 @@
+Repository Kriteria 1:
+https://github.com/bulgogipedas/smlsml-credit-scoring/tree/main/Eksperimen_SML_Rafli-Ardiansyah
+
+Catatan:
+Pastikan repository GitHub diatur Public sebelum dikirim ke reviewer.

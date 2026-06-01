@@ -1,0 +1,14 @@
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+venv/
+mlruns/
+mlartifacts/
+artifacts/
+latest_run_id.txt
+*.log
+*.zip
+.pytest_cache/
+dist/
+build/

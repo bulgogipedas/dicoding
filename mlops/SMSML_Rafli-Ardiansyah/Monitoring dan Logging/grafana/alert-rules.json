@@ -1,0 +1,117 @@
+{
+  "name": "SMSML Advanced",
+  "folderUID": "ffnotovl9l69sc",
+  "interval": "10s",
+  "rules": [
+    {
+      "uid": "smsml-high-latency",
+      "title": "High latency",
+      "condition": "C",
+      "data": [
+        {
+          "refId": "A",
+          "relativeTimeRange": {"from": 600, "to": 0},
+          "datasourceUid": "PBFA97CFB590B2093",
+          "model": {
+            "expr": "histogram_quantile(0.95, rate(credit_request_latency_seconds_bucket[5m]))",
+            "instant": true,
+            "intervalMs": 1000,
+            "maxDataPoints": 43200,
+            "refId": "A"
+          }
+        },
+        {
+          "refId": "C",
+          "relativeTimeRange": {"from": 600, "to": 0},
+          "datasourceUid": "__expr__",
+          "model": {
+            "conditions": [
+              {
+                "evaluator": {"params": [0], "type": "gt"},
+                "operator": {"type": "and"},
+                "query": {"params": ["C"]},
+                "reducer": {"params": [], "type": "last"},
+                "type": "query"
+              }
+            ],
+            "datasource": {"type": "__expr__", "uid": "__expr__"},
+            "expression": "A",
+            "intervalMs": 1000,
+            "maxDataPoints": 43200,
+            "refId": "C",
+            "type": "threshold"
+          }
+        }
+      ],
+      "for": "0s",
+      "noDataState": "NoData",
+      "execErrState": "Error",
+      "annotations": {"summary": "Latency alert for credit scoring API"},
+      "labels": {"metric": "latency"}
+    },
+    {
+      "uid": "smsml-error-total",
+      "title": "High error total",
+      "condition": "C",
+      "data": [
+        {
+          "refId": "A",
+          "relativeTimeRange": {"from": 600, "to": 0},
+          "datasourceUid": "PBFA97CFB590B2093",
+          "model": {"expr": "credit_error_total", "instant": true, "intervalMs": 1000, "maxDataPoints": 43200, "refId": "A"}
+        },
+        {
+          "refId": "C",
+          "relativeTimeRange": {"from": 600, "to": 0},
+          "datasourceUid": "__expr__",
+          "model": {
+            "conditions": [{"evaluator": {"params": [0], "type": "gt"}, "operator": {"type": "and"}, "query": {"params": ["C"]}, "reducer": {"params": [], "type": "last"}, "type": "query"}],
+            "datasource": {"type": "__expr__", "uid": "__expr__"},
+            "expression": "A",
+            "intervalMs": 1000,
+            "maxDataPoints": 43200,
+            "refId": "C",
+            "type": "threshold"
+          }
+        }
+      ],
+      "for": "0s",
+      "noDataState": "NoData",
+      "execErrState": "Error",
+      "annotations": {"summary": "Error alert for credit scoring API"},
+      "labels": {"metric": "error"}
+    },
+    {
+      "uid": "smsml-default-ratio",
+      "title": "High default prediction ratio",
+      "condition": "C",
+      "data": [
+        {
+          "refId": "A",
+          "relativeTimeRange": {"from": 600, "to": 0},
+          "datasourceUid": "PBFA97CFB590B2093",
+          "model": {"expr": "credit_default_prediction_ratio", "instant": true, "intervalMs": 1000, "maxDataPoints": 43200, "refId": "A"}
+        },
+        {
+          "refId": "C",
+          "relativeTimeRange": {"from": 600, "to": 0},
+          "datasourceUid": "__expr__",
+          "model": {
+            "conditions": [{"evaluator": {"params": [0], "type": "gt"}, "operator": {"type": "and"}, "query": {"params": ["C"]}, "reducer": {"params": [], "type": "last"}, "type": "query"}],
+            "datasource": {"type": "__expr__", "uid": "__expr__"},
+            "expression": "A",
+            "intervalMs": 1000,
+            "maxDataPoints": 43200,
+            "refId": "C",
+            "type": "threshold"
+          }
+        }
+      ],
+      "for": "0s",
+      "noDataState": "NoData",
+      "execErrState": "Error",
+      "annotations": {"summary": "Default prediction ratio alert"},
+      "labels": {"metric": "default_ratio"}
+    }
+  ]
+}

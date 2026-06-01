@@ -1,0 +1,8 @@
+Repository Kriteria 3:
+https://github.com/bulgogipedas/smlsml-credit-scoring/tree/main/Workflow-CI
+
+GitHub Actions:
+https://github.com/bulgogipedas/smlsml-credit-scoring/actions
+
+Catatan:
+Pastikan repository GitHub diatur Public sebelum dikirim ke reviewer.

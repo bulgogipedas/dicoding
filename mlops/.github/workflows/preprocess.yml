@@ -1,0 +1,36 @@
+name: Preprocess Credit Dataset
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "Eksperimen_SML_Rafli-Ardiansyah/**"
+      - ".github/workflows/preprocess.yml"
+
+jobs:
+  preprocess:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12.7
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12.7"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas numpy scikit-learn==1.5.2 joblib xlrd
+
+      - name: Run preprocessing
+        run: |
+          python Eksperimen_SML_Rafli-Ardiansyah/preprocessing/automate_Rafli_Ardiansyah.py \
+            --output-dir credit_default_preprocessing
+
+      - name: Upload preprocessed dataset
+        uses: actions/upload-artifact@v4
+        with:
+          name: credit-default-preprocessing
+          path: credit_default_preprocessing

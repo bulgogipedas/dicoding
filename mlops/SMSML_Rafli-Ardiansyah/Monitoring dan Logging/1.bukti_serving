@@ -1,0 +1,15 @@
+Ambil screenshot setelah model serving lokal berjalan.
+
+Contoh dengan Podman:
+
+podman run --rm -p 5001:8080 <dockerhub-username>/smlsml-credit-scoring:latest
+
+Contoh dengan exporter lokal:
+
+uvicorn "3.prometheus_exporter:app" --host 127.0.0.1 --port 8000
+python 7.Inference.py
+
+Screenshot yang valid sebaiknya menampilkan:
+- endpoint serving aktif
+- request inference sukses
+- response prediction terlihat
